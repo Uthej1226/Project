@@ -1,0 +1,80 @@
+/* Global Reset and Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('background.jpg'); /* Replace 'path_to_your_image.jpg' with your image file */
+    background-size: cover; /* Adjust background size to cover the entire body */
+    background-position: center; /* Center the background image */
+    transition: background-image 0.005s ease-in-out; /* Transition for background image change */
+    
+}
+
+/* Header Styles */
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Container Styles */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Game Container Styles */
+.game-container {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+/* Grid Styles */
+/* Grid Styles for a 5x5 Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 50px);
+    grid-template-rows: repeat(5, 50px);
+    gap: 5px;
+}
+
+/* Square Styles for a 5x5 Grid */
+.square {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+/* Buttons Styles */
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.is-red {
+    background-color:black;
+}
+
+
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+    button:hover {
+        background-color: #555;
+    }
