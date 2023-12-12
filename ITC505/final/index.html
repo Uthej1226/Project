@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lights Out Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <style></style>
+</head>
+<body>
+    <header>
+        <h1>Lights Out Game</h1>
+    </header>
+    <div class="container">
+        <div class="game-container">
+            <div class="grid" id="grid">
+                <!-- Grid will be generated dynamically using JavaScript -->
+            </div>
+            <div class="buttons">
+                <button id="resetButton">Reset</button>
+                <button id="randomizeButton">Randomize</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+    let isDiagonalToggle = false; // Track the toggle mode
+const gridSize = 5; // Updated grid size
+const grid = document.getElementById('grid');
+
+document.getElementById('resetButton').addEventListener('click', generateGrid);
+document.getElementById('randomizeButton').addEventListener('click', randomizeGrid);
+document.getElementById('toggleThemeButton').addEventListener('click', toggleSquares);
+
+function toggleSquares() {
+    isDiagonalToggle = !isDiagonalToggle; // Toggle the mode
+
+    // Change button text based on toggle mode
+    const toggleButton = document.getElementById('toggleThemeButton');
+    toggleButton.textContent = isDiagonalToggle ? 'Toggle Diagonal' : 'Toggle Adjacent';
+
+    // Regenerate the grid with the appropriate toggle mode
+    generateGrid();
+}
+
+function toggleSquare(square) {
+    square.classList.toggle('is-red');
+    animateBackground(square);
+
+    // Toggle either diagonal or adjacent squares based on the mode
+    if (isDiagonalToggle) {
+        toggleDiagonalSquares(square);
+    } else {
+        toggleAdjacentSquares(square);
+    }
+}
+
+function toggleDiagonalSquares(square) {
+    const rowIndex = +square.getAttribute('data-row');
+    const colIndex = +square.getAttribute('data-col');
+
+    const directions = [
+        { row: -1, col: -1 },
+        { row: -1, col: 1 },
+        { row: 1, col: -1 },
+        { row: 1, col: 1 }
+    ];
+
+    for (const dir of directions) {
+        const newRow = rowIndex + dir.row;
+        const newCol = colIndex + dir.col;
+
+        const diagonalSquare = document.querySelector(`.square[data-row="${newRow}"][data-col="${newCol}"]`);
+        if (diagonalSquare) {
+            diagonalSquare.classList.toggle('is-red');
+            animateBackground(diagonalSquare);
+        }
+    }
+}
+
+function toggleAdjacentSquares(square) {
+    const rowIndex = +square.getAttribute('data-row');
+    const colIndex = +square.getAttribute('data-col');
+
+    const directions = [
+        { row: -1, col: 0 },
+        { row: 1, col: 0 },
+        { row: 0, col: -1 },
+        { row: 0, col: 1 }
+    ];
+
+    for (const dir of directions) {
+        const newRow = rowIndex + dir.row;
+        const newCol = colIndex + dir.col;
+
+        const adjacentSquare = document.querySelector(`.square[data-row="${newRow}"][data-col="${newCol}"]`);
+        if (adjacentSquare) {
+            adjacentSquare.classList.toggle('is-red');
+            animateBackground(adjacentSquare);
+        }
+    }
+}
+
+function clearGrid() {
+    while (grid.firstChild) {
+        grid.removeChild(grid.firstChild);
+    }
+}
+
+function generateGrid() {
+    clearGrid();
+    for (let i = 0; i < gridSize; i++) {
+        for (let j = 0; j < gridSize; j++) {
+            const square = document.createElement('div');
+            square.classList.add('square');
+            square.setAttribute('data-row', i);
+            square.setAttribute('data-col', j);
+            square.addEventListener('click', () => {
+                toggleSquare(square);
+            });
+            grid.appendChild(square);
+        }
+    }
+}
+
+function randomizeGrid() {
+    const squares = document.querySelectorAll('.square');
+    squares.forEach((square) => {
+        if (Math.random() > 0.5) {
+            square.classList.add('is-red');
+        } else {
+            square.classList.remove('is-red');
+        }
+    });
+}
+
+// Initial grid generation
+generateGrid();
+
+// Animation functions remain unchanged
+function animateBackground(element) {
+    element.animate(
+        [
+            { backgroundColor: 'black' },
+            { backgroundColor: 'transparent' }
+        ],
+        {
+            duration: 500,
+            easing: 'ease-in-out'
+        }
+    );
+}
+
+    </script>
+</body>
+</html>
