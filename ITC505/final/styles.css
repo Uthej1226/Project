@@ -1,21 +1,68 @@
 /* Global Reset and Base Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('background.jpg'); /* Replace 'path_to_your_image.jpg' with your image file */
-    background-size: cover; /* Adjust background size to cover the entire body */
-    background-position: center; /* Center the background image */
-    transition: background-image 0.005s ease-in-out; /* Transition for background image change */
-    
+    background-image: url('background.jpg'); /* Your background image */
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+    color: #333; /* Default text color */
 }
 
-/* Header Styles */
 header {
     background-color: #333;
     color: white;
     text-align: center;
     padding: 20px 0;
+    font-family: 'Helvetica', sans-serif; /* Change the font for headers */
+}
+.addendum {
+    background-color: #ffdab9; /* Peach background color */
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+    .addendum h2 {
+        color: #333; /* Heading color */
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+
+    .addendum p {
+        color: #555; /* Paragraph text color */
+        font-size: 1.1em;
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+
+    .addendum ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .addendum li {
+        color: #666; /* List item text color */
+        margin-bottom: 5px;
+    }
+
+    .addendum p:last-child {
+        margin-top: 15px; /* Additional margin for the last paragraph */
+        font-style: italic;
+        color: #777; /* Footer text color */
+    }
+
+h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #555; /* Header text color */
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #666; /* Body text color */
 }
 
 /* Container Styles */
@@ -28,10 +75,10 @@ header {
 
 /* Game Container Styles */
 .game-container {
-    background-color: #f0f0f0;
+    background-color: #f9f9f9; /* Lighter background for the container */
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    padding: 40px; /* Increased padding */
 }
 
 /* Grid Styles */
@@ -48,26 +95,25 @@ header {
     width: 50px;
     height: 50px;
     background-color: #fff;
-    border: 1px solid #000;
+    border: 1px solid #ccc; /* Lighter border color for squares */
     cursor: pointer;
 }
 
 /* Buttons Styles */
 .buttons {
-    margin-top: 20px;
+    margin-top: 30px; /* Increased top margin for buttons */
     display: flex;
     justify-content: center;
 }
 
 .is-red {
-    background-color:black;
+    background-color: black;
 }
 
-
 button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    font-size: 16px;
+    padding: 12px 24px; /* Slightly larger button padding */
+    margin: 0 15px; /* Increased margin between buttons */
+    font-size: 18px; /* Slightly larger font size */
     cursor: pointer;
     background-color: #333;
     color: white;
